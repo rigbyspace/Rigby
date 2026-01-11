@@ -1,0 +1,12 @@
+CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
+
+The person or persons associated with the authorship and creation of this work hereby dedicate the theoretical content contained herein, including but not limited to mathematical frameworks, formal definitions, equations, proofs, derivations, and conceptual models, to the public domain worldwide to the fullest extent permitted by law.
+
+This dedication is made with the express intent that all rights, including copyright and all related and neighboring rights, are waived unconditionally, and that this work may be used, copied, modified, distributed, or otherwise employed for any purpose, without restriction or attribution, and without the need for permission from the author(s) or any subsequent rights holder(s).
+
+This dedication is irrevocable. No party shall assert copyright, moral rights, database rights, or any related proprietary claim over the content so released.
+
+For the avoidance of doubt, this dedication applies to all theoretical, non-software content contained within this repository.
+
+This work is released under the CC0 1.0 Universal license as published by Creative Commons. The full legal code is available at: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+

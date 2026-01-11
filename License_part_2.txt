@@ -1,0 +1,15 @@
+GNU AFFERO GENERAL PUBLIC LICENSE
+Version 3, 19 November 2007
+
+Copyright (C) 2026
+
+This software is licensed under the GNU Affero General Public License Version 3 (AGPLv3). This license grants all users the rights to use, study, share, and modify the software, with the condition that any derivative works or modified versions must also be licensed under the AGPLv3 and accompanied by source code.
+
+The license ensures that all future modifications and derivatives remain publicly accessible under the same terms, including software deployed over networks or embedded in commercial or proprietary systems. No party is permitted to circumvent these requirements through obfuscation, technical barriers, or restrictive contracts.
+
+This license also includes a non-exclusive, royalty-free patent license from each contributor to all users, covering all patent claims that would otherwise be infringed by the use or distribution of the work.
+
+No warranties are provided. Use this software at your own risk. This license does not grant permission to use trade names, trademarks, service marks, or product names of the licensor, except as required for describing the origin of the work.
+
+A copy of the full AGPLv3 license text is available at: https://www.gnu.org/licenses/agpl-3.0.en.html
+
