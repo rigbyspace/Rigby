@@ -1,0 +1,866 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\geometry{margin=.4in}
+
+\title{Rigbyspace Dynamics\\Unified Dynamics Series\\Master Standard Reference}
+\author{D. Veneziano}
+\date{January 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Abstract}
+Rigbyspace Dynamics is a foundational physical theory whose ontology is strictly discrete and integer-based.
+The theory admits only integers, finite sets, finite sequences, and finite directed graphs as physically existent.
+All laws of evolution are expressed as integer-preserving transformations acting on unreduced integer tuples.
+Continuum constructs, real numbers, limits, analytic functions, equivalence classes, and differential structures
+are excluded from existence. Cyclic structure replaces remainder relations; rank replaces logarithmic scale; deviation
+replaces distance-to-limit; and convergence is defined by finite stabilization into a triadic barycentric cycle.
+Vacuum evolution is linear; matter evolution is polynomial and enforces strict structural monotonicity, yielding
+an intrinsic arrow of time. ZERO Logic resolves suspended metric states through reciprocal transformation without
+admitting null collapse. Interval invariance is established through cross-determinant equality. A gravitational
+constraint is introduced via phase viscosity drift. Discrete constants are defined as stable barycentric cycle
+structures rather than scalar limits. Worked examples and a complete glossary are included.
+
+\tableofcontents
+\newpage
+
+%=========================================================
+\part{Foundational Ontology and Prohibitions}
+%=========================================================
+
+\section{Primitive Existence}
+
+\subsection{Primitive Objects}
+Physical existence is restricted to the following primitives:
+
+\begin{enumerate}
+\item Integers, denoted $\mathbb{Z}$.
+\item Finite sets of integers.
+\item Finite ordered sequences of integers.
+\item Finite directed graphs $G=(V,E)$ whose vertex labels are integers and whose edge set $E \subset V\times V$ is finite.
+\end{enumerate}
+
+No other object types are admitted. Any physical statement must be reducible to relations among the primitives above.
+
+\subsection{Finite Realization}
+\textbf{Axiom F1 (Finite Realization).}
+A state is physically admissible if and only if it can be obtained from admissible primitives
+by a finite succession of admissible transformations.
+
+This axiom is not a method; it is a physical restriction on existence.
+
+\section{Non-Existence and Forbidden Constructs}
+
+\subsection{Prohibited Objects}
+The following are declared non-existent as physical objects:
+
+\begin{enumerate}
+\item Real numbers and any structure requiring real completion.
+\item Continuous manifolds, smooth surfaces, and differentiable structures.
+\item Infinitesimals and any appeal to ``arbitrarily small'' magnitude.
+\item Infinite sequences and any appeal to ``arbitrarily large'' magnitude.
+\item Analytic functions defined by infinite series.
+\item Equivalence classes (in particular, quotient-based definitions of rational numbers).
+\end{enumerate}
+
+\subsection{Consequences of Prohibitions}
+Because equivalence classes do not exist, rational identification such as $(2,2)\equiv(1,1)$ is not admissible.
+Pairs are unreduced and retain full physical content.
+
+Because limits do not exist, ``convergence'' cannot mean approach to a point.
+It is replaced by finite stabilization into a cycle defined entirely within the allowed ontology.
+
+\section{Separation of Ontic Structures and Descriptive Labels}
+
+\subsection{Ontic Structures}
+Ontic structures possess physical status and may appear in laws:
+integers, finite graphs, integer tuples, and the transformations defined in this document.
+
+\subsection{Descriptive Labels}
+Words such as ``wave,'' ``particle,'' ``field,'' ``force,'' ``energy,'' and ``space'' may be used as descriptive labels.
+They are not primitives and carry no formal weight in derivations.
+
+\subsection{Separation Principle}
+\textbf{Axiom F2 (Ontic Primacy).}
+Every lawful statement is a statement about ontic structures.
+Descriptive labels may accompany results but never determine them.
+
+%=========================================================
+\part{Discrete Cyclic Structure and Scale}
+%=========================================================
+
+\section{Phase Structure: Cyclicity Without Remainder}
+
+\subsection{Phase Space}
+Fix an integer $N\ge 1$.
+Define the phase space $\Phi_N$ as the directed graph with
+\[
+V_N=\{0,1,2,\dots,N-1\},
+\]
+and edge set
+\[
+E_N=\{(i,i+1)\,:\,0\le i<N-1\}\cup\{(N-1,0)\}.
+\]
+
+\subsection{Successor-with-Reset}
+Define the successor-with-reset transformation $\mathrm{succ}_N:\Phi_N\to\Phi_N$ by:
+\[
+\mathrm{succ}_N(s)=
+\begin{cases}
+0,& s=N-1,\\
+s+1,& 0\le s<N-1.
+\end{cases}
+\]
+
+\subsection{Causal Phase Trajectory}
+Given an initial phase $s_0\in\Phi_N$, define the phase trajectory $\varphi_N$ by:
+\[
+\varphi_N(0)=s_0,\qquad \varphi_N(k+1)=\mathrm{succ}_N(\varphi_N(k)).
+\]
+This is a physical cyclic progression on a finite directed graph.
+
+\subsection{Symbolic Example: Explicit Phase Cycle}
+Let $N=5$ and $s_0=3$.
+Then
+\[
+\varphi_5(0)=3,\ \varphi_5(1)=4,\ \varphi_5(2)=0,\ \varphi_5(3)=1,\ \varphi_5(4)=2,\ \varphi_5(5)=3,
+\]
+closing after $5$ steps.
+
+This example is not a representation of a remainder; cyclicity is a graph property.
+
+\section{Discrete Scale: Rank Without Logarithm}
+
+\subsection{Doubling Thresholds}
+Define the threshold sequence $\{T_k\}_{k\ge 0}$ by
+\[
+T_0=1,\qquad T_{k+1}=2T_k.
+\]
+Thus $T_k=2^k$ is not invoked as a real-valued exponential, but as repeated integer doubling.
+
+\subsection{Rank Definition}
+For each integer $m\ge 0$, define the rank $\rho(m)$ to be the unique integer satisfying
+\[
+T_{\rho(m)}\le m < T_{\rho(m)+1},
+\]
+with the convention $\rho(0)=0$.
+
+Rank measures structural depth by counting how many doubling thresholds are surpassed.
+
+\subsection{Worked Examples: Rank Values}
+\begin{enumerate}
+\item $m=0$: $\rho(0)=0$ by convention.
+\item $m=1$: $T_0=1\le 1<2=T_1$, hence $\rho(1)=0$.
+\item $m=2$: $2=T_1\le 2<4=T_2$, hence $\rho(2)=1$.
+\item $m=3$: $2=T_1\le 3<4=T_2$, hence $\rho(3)=1$.
+\item $m=4$: $4=T_2\le 4<8=T_3$, hence $\rho(4)=2$.
+\item $m=7$: $4=T_2\le 7<8=T_3$, hence $\rho(7)=2$.
+\item $m=8$: $8=T_3\le 8<16=T_4$, hence $\rho(8)=3$.
+\end{enumerate}
+
+\subsection{Rank Inequalities}
+\textbf{Proposition S1 (Additive bound).}
+For $a,b\in\mathbb{Z}_{\ge 0}$,
+\[
+\rho(a+b)\le \max(\rho(a),\rho(b))+1.
+\]
+
+\textbf{Proposition S2 (Multiplicative bound).}
+For $a,b\in\mathbb{Z}_{\ge 0}$,
+\[
+\rho(ab)\le \rho(a)+\rho(b)+1.
+\]
+
+These bounds express structural limits on growth in the integer domain.
+
+%=========================================================
+\part{Deviation and Stabilization Without Limits}
+%=========================================================
+
+\section{Unreduced Pairs and Cross-Determinant Deviation}
+
+\subsection{Unreduced Pair}
+An unreduced pair is an ordered tuple $(n,d)\in\mathbb{Z}^2$ with $d\ne 0$.
+No reduction by common divisors is allowed.
+
+\subsection{Cross-Determinant}
+Let $a=(n_a,d_a)$ and $b=(n_b,d_b)$ be unreduced pairs with $d_a\ne 0$ and $d_b\ne 0$.
+Define the cross-determinant deviation:
+\[
+\Delta_{\times}(a,b)=n_b d_a - n_a d_b.
+\]
+
+\subsection{Meaning of Deviation}
+\begin{itemize}
+\item $\Delta_{\times}(a,b)=0$ signifies exact equivalence of cross-products: $n_b d_a=n_a d_b$.
+\item $\Delta_{\times}(a,b)\ne 0$ signifies discrete deviation between the two pairs.
+\end{itemize}
+
+No distance or limit is invoked: the relation is purely integer and exact.
+
+\subsection{Worked Example: Cross-Determinant}
+Let $a=(2,4)$ and $b=(1,2)$.
+Then
+\[
+\Delta_{\times}(a,b)=1\cdot 4 - 2\cdot 2 = 4-4=0.
+\]
+Thus $(2,4)$ and $(1,2)$ satisfy cross-product equivalence, yet remain distinct physical states because reduction is forbidden.
+
+\section{Triadic Convergence: Stabilization Without Scalar Limits}
+
+\subsection{Nested Interval Pairs}
+A nested interval is represented by adjacent unreduced pairs $(L,U)$ with a discrete width condition.
+Width is defined by integer ordering on cross-products, not by real subtraction.
+
+\subsection{Triadic Barycentric Cycle}
+\textbf{Definition.}
+A sequence stabilizes when it enters a three-phase barycentric cycle:
+\[
+\Phi_{\text{Triad}}=\{\text{Emission},\text{Memory},\text{Return}\},
+\]
+and remains within it, with discrete interval width locked to unity in the integer ordering sense.
+
+\subsection{Explanation of Stabilization}
+Stabilization is not approach to a point.
+It is the physical condition that no admissible refinement can distinguish the state from its adjacent bounds.
+The system is thereby locked in a stable three-phase structure.
+
+\subsection{Worked Example: Triad Sketch}
+Let a system pass through successive bounded pairs:
+\[
+(L_0,U_0)\to (L_1,U_1)\to (L_2,U_2)\to \cdots
+\]
+with each step narrowing the admissible region in the discrete ordering sense until the width becomes unity.
+At that stage the state is locked between adjacent rational pairs and cycles through the triad phases.
+
+This defines a constant as a stable barycentric cycle, not as a scalar limit.
+
+%=========================================================
+\part{State Spaces}
+%=========================================================
+
+\section{Linear State Space $S_L$}
+
+\subsection{Definition}
+Define the linear state space:
+\[
+S_L=\{(n,d)\in\mathbb{Z}^2\mid d\ne 0\}.
+\]
+
+\subsection{Physical Interpretation}
+\begin{itemize}
+\item $n$ is magnitude history.
+\item $d$ is inertial basis (metric basis).
+\end{itemize}
+These are ontic components, not coordinates in $\mathbb{R}^2$.
+
+\subsection{Extended Linear Space and Suspension}
+Define the extended space:
+\[
+S_L^{\mathrm{ext}}=S_L\cup \{(n,0)\mid n\in\mathbb{Z}\}.
+\]
+States $(n,0)$ represent metric suspension: inertial basis is absent while history remains.
+
+\section{Projective State Space $S_P$}
+
+\subsection{Definition}
+Define the projective state space:
+\[
+S_P=\{(X,Y,Z)\in\mathbb{Z}^3\mid X\ne 0,\ Y\ne 0,\ Z\ne 0\}.
+\]
+
+\subsection{Physical Interpretation}
+Projective states represent matter-bearing configurations.
+Their defining property is multiplicative structural growth under lawful matter transformations.
+
+%=========================================================
+\part{Primitive Transformations and Operator Algebra}
+%=========================================================
+
+\section{Vacuum Generators on $S_L$}
+
+\subsection{Accumulator}
+Define the accumulator $\lambda:S_L\to S_L$ by
+\[
+\lambda(n,d)=(n+d,\ d).
+\]
+
+\subsection{Step}
+Define the step $\eta:S_L\to S_L$ by
+\[
+\eta(n,d)=(n+d,\ n).
+\]
+
+\subsection{Symbolic Example: Vacuum Evolution}
+Let $s_0=(1,1)$.
+Then
+\[
+\lambda(1,1)=(2,1),\quad \lambda(2,1)=(3,1),\quad \lambda(3,1)=(4,1).
+\]
+Ranks:
+\[
+\rho(1)=0,\ \rho(1)=0,\ \rho(1)=0,\ \rho(1)=0
+\]
+for the denominator, showing vacuum inertia can remain minimal while magnitude grows.
+
+Now apply $\eta$:
+\[
+\eta(1,1)=(2,1),\quad \eta(2,1)=(3,2),\quad \eta(3,2)=(5,3).
+\]
+Here the inertial basis changes, and so does its rank.
+
+\section{Transformative Reciprocal $\psi$}
+
+\subsection{Definition}
+For coupled linear states $S_1=(a,b)$ and $S_2=(c,d)$ in $S_L^{\mathrm{ext}}$, define:
+\[
+\psi((a,b),(c,d))=((d,a),(b,c)).
+\]
+
+\subsection{Cycle-4 Identity}
+\textbf{Theorem O1 (Cycle-4).}
+Repeated application of $\psi$ on a coupled pair produces a four-stage cycle:
+\[
+\psi^4((a,b),(c,d))=((a,b),(c,d)).
+\]
+
+\subsection{Worked Example: Explicit Cycle}
+Let $(a,b)=(2,5)$ and $(c,d)=(7,3)$.
+Then
+\[
+\psi((2,5),(7,3))=((3,2),(5,7)).
+\]
+Apply again:
+\[
+\psi((3,2),(5,7))=((7,3),(2,5)).
+\]
+Apply again:
+\[
+\psi((7,3),(2,5))=((5,7),(3,2)).
+\]
+Apply again:
+\[
+\psi((5,7),(3,2))=((2,5),(7,3)).
+\]
+The four-stage closure is explicit.
+
+\section{ZERO Logic}
+
+\subsection{ZERO Classifications}
+\begin{itemize}
+\item \textbf{Numerical ZERO}: $(0,d)$ with $d>0$ is admissible.
+\item \textbf{Constraint Vacuum}: $(n,0)$ with $n\ne 0$ is admissible but suspended.
+\item \textbf{Null State}: $(0,0)$ is forbidden.
+\end{itemize}
+
+\subsection{Resolution Law}
+\textbf{Law Z1 (Standard Resolution).}
+If a constraint vacuum $(n,0)$ couples to $(c,d)$ with $d\ne 0$, then
+\[
+\psi((n,0),(c,d))=((0,n),(d,c)).
+\]
+The suspended history $n$ becomes the restored metric basis.
+
+\subsection{Worked Example: Resolution}
+Let $(n,0)=(9,0)$ and $(c,d)=(4,7)$.
+Then
+\[
+\psi((9,0),(4,7))=((0,9),(7,4)).
+\]
+The result contains no null state and preserves the suspended history as a metric basis.
+
+\section{Matter Generator on $S_P$ (Case B: Doubling Form)}
+
+\subsection{Definition of the Doubling Form}
+Let $P=(X,Y,Z)\in S_P$.
+Define intermediate integer expressions:
+\begin{align*}
+A &= Y^2,\\
+B &= 4X A,\\
+D &= 3X^2 + Z^2.
+\end{align*}
+Define the transformed components:
+\begin{align*}
+X' &= 2Y D^2 - 2B,\\
+Z' &= 8Y^3 Z^3.
+\end{align*}
+The remaining component $Y'$ is fixed by the coupling constraint that maintains admissibility in $S_P$.
+(That constraint is part of the physical coupling law, and it ensures $Y'\ne 0$ whenever $X,Y,Z\ne 0$.)
+
+Denote this matter transformation by
+\[
+P \ \boxplus\  P_\star \quad \text{or simply} \quad P \mapsto P^{+},
+\]
+where $P_\star$ is the coupled source state when present, and where the above form gives the intrinsic doubling structure.
+
+\subsection{Structural Monotonicity}
+\textbf{Axiom M1 (Arrow of Time).}
+Any admissible matter transformation must enforce strict increase of structural depth in the matter-bearing component:
+\[
+\rho(Z') > \rho(Z).
+\]
+This is not statistical; it is a law of admissible transformation.
+
+\subsection{Worked Example: Matter Growth}
+Let $P_0=(1,1,1)$.
+Then
+\[
+A=1^2=1,\quad B=4\cdot 1\cdot 1=4,\quad D=3\cdot 1^2 + 1^2 = 4.
+\]
+Thus
+\[
+X' = 2\cdot 1 \cdot 4^2 - 2\cdot 4 = 2\cdot 16 - 8 = 32-8=24,
+\]
+and
+\[
+Z' = 8\cdot 1^3\cdot 1^3 = 8.
+\]
+So one obtains a transformed state of the form
+\[
+P_1=(24,\ Y',\ 8),
+\]
+with $Y'$ set by the coupling constraint.
+Even without specifying $Y'$, the rank growth in $Z$ is explicit:
+\[
+\rho(1)=0,\qquad \rho(8)=3.
+\]
+This displays strict structural increase.
+
+%=========================================================
+\part{System Axioms: Vacuum vs Matter}
+%=========================================================
+
+\section{Phase Regimes}
+
+\subsection{Vacuum Regime}
+\textbf{Axiom R1 (Vacuum Regime).}
+Vacuum evolution acts on $S_L$ and is generated by $\lambda$ and $\eta$.
+Growth is additive in the sense that each application adds an existing component to another.
+
+\subsection{Matter Regime}
+\textbf{Axiom R2 (Matter Regime).}
+Matter evolution acts on $S_P$ and is generated by admissible polynomial transformations such as the doubling form.
+Growth is multiplicative in the sense that products of components appear in the transformed state.
+
+\subsection{Mutual Exclusivity}
+\textbf{Axiom R3 (Regime Separation).}
+A state occupies either vacuum evolution ($S_L$) or matter evolution ($S_P$) at any given causal stage.
+Transitions between regimes occur only through explicit coupling rules.
+
+%=========================================================
+\part{Mass, Time, and Physical Duration}
+%=========================================================
+
+\section{Inertial Mass and Mass Level}
+
+\subsection{Inertial Mass}
+For a linear state $s=(n,d)\in S_L$, define the inertial mass:
+\[
+m_I(s)=d.
+\]
+
+\subsection{Mass Level}
+Define the mass level:
+\[
+m_L(s)=\rho(d).
+\]
+Mass level is a discrete structural classification.
+
+\subsection{Mass Gap}
+\textbf{Theorem P1 (Mass Gap).}
+There is a minimal nonzero mass level.
+No admissible state satisfies $0<m_L(s)<1$.
+
+\textbf{Explanation.}
+By definition $m_L(s)$ is integer-valued.
+Thus the set of positive mass levels has minimal element $1$.
+
+\section{Causal Index and Physical Duration}
+
+\subsection{Causal Index}
+Causal index $k\in\mathbb{Z}_{\ge 0}$ is the universal count of lawful succession:
+it labels the ordered application of admissible transformations.
+
+\subsection{Structural Entropy}
+Define structural entropy of a linear state $s=(n,d)$ by
+\[
+H(s)=\rho(d).
+\]
+
+\subsection{Physical Duration Functional}
+Define the physical duration accumulated along a trajectory $\{s_k\}$ by
+\[
+T(\{s_k\})=\sum_{k\ge 0} \mathbf{1}_{H(s_k)>0},
+\]
+where $\mathbf{1}_{H(s_k)>0}$ is $1$ when $H(s_k)>0$ and $0$ otherwise.
+
+\subsection{Explanation}
+A state accumulates physical duration only when it carries nonzero structural entropy (nonzero rank in its inertial basis).
+This distinguishes causal succession from experienced duration within the theory.
+
+%=========================================================
+\part{Interval Invariance}
+%=========================================================
+
+\section{Interval Functional}
+
+\subsection{Paired Event Structure}
+Define a paired event $E$ as an ordered pair of linear states
+\[
+E = (S_t, S_x),\qquad S_t=(n_t,d_t),\quad S_x=(n_x,d_x),
+\]
+with $d_t\ne 0$ and $d_x\ne 0$.
+
+\subsection{Interval Definition}
+Define the interval functional:
+\[
+I(E)=n_t^2 d_x^2 - n_x^2 d_t^2.
+\]
+This is a pure integer expression.
+It is neither a continuous norm nor a real-valued metric.
+
+\subsection{Worked Example: Interval Value}
+Let $S_t=(3,2)$ and $S_x=(1,4)$.
+Then
+\[
+I(E)=3^2\cdot 4^2 - 1^2\cdot 2^2 = 9\cdot 16 - 4 = 144-4=140.
+\]
+
+\section{Integer Boost Structure}
+
+\subsection{Boost State}
+Let $U=(n_u,d_u)\in S_L$ be a boost state.
+It is an ontic linear state, not a real velocity.
+
+\subsection{Boost Transformation}
+Define transformed event components:
+\begin{align*}
+n_t' &= n_t d_u + n_x n_u,\\
+n_x' &= n_x d_u + n_t n_u,\\
+d_t' &= d_t d_u,\\
+d_x' &= d_x d_u.
+\end{align*}
+Define $E'=(S_t',S_x')$ using these transformed components.
+
+\section{Interval Invariance Theorem}
+
+\textbf{Theorem I1 (Interval Invariance).}
+For any admissible event $E$ and boost state $U$, the interval satisfies:
+\[
+I(E')=I(E)\cdot \Delta_U^2,
+\]
+where the boost factor $\Delta_U$ is an integer expression determined entirely by $(n_u,d_u)$.
+
+\textbf{Explanation of the Factor.}
+The theory does not assign real normalization.
+Instead it identifies invariance through exact cross-determinant equality between transformed and untransformed cross-products.
+The factor $\Delta_U^2$ is itself a physically admissible integer structure, and the equality is exact.
+
+\textbf{Worked Symbolic Check.}
+Because each transformed term is a bilinear combination of integers, the transformed interval expands into a finite sum of integer monomials.
+Grouping like terms yields cancellation of mixed products by symmetry under exchange of $(t,x)$ labels,
+leaving a common integer factor multiplying the original interval expression.
+
+No appeal to real normalization enters.
+
+%=========================================================
+\part{Gravitational Constraint: Phase Viscosity Drift}
+%=========================================================
+
+\section{Phase Viscosity}
+
+\subsection{Phase Track}
+Let $\tau_k\in \Phi_{N^2}$ denote the phase label attached to a matter-bearing trajectory step $k$.
+
+\subsection{Residual Against Closure}
+Within $\Phi_{N^2}$, closure occurs when a full cycle returns exactly to the initial vertex after a fixed period $T$.
+Matter interaction produces a persistent residual displacement against ideal closure.
+This residual is not an error; it is a physical asymmetry enforced by the matter regime.
+
+\section{Remainder-Free Residual Sign}
+
+\subsection{Residual Sign by Graph Position}
+Define the residual sign $\sigma(\tau_k)$ relative to the distinguished vertex $0$ in $\Phi_{N^2}$ by:
+\[
+\sigma(\tau_k)=
+\begin{cases}
+0, & \tau_k=0,\\
++1,& 1\le \tau_k\le \frac{N^2-1}{2},\\
+-1,& \frac{N^2+1}{2}\le \tau_k\le N^2-1,
+\end{cases}
+\]
+for odd $N^2$.
+For even $N^2$, choose the split into two equal halves with the same intent: orientation about the cycle.
+
+This definition uses only the graph ordering of vertices.
+
+\section{Drift Functional}
+
+\subsection{Definition}
+For a closed cycle of duration $T$, define the drift
+\[
+D(N)=\sum_{k=0}^{T-1}\sigma(\tau_k).
+\]
+
+\subsection{Gravity Constraint}
+\textbf{Postulate G1 (Non-vanishing Drift).}
+For physically coherent matter cycles,
+\[
+D(N)\ne 0.
+\]
+
+\subsection{Explanation}
+Non-vanishing drift enforces persistent deviation of phase return.
+This is the discrete origin of curvature-like behavior without geometric postulate.
+
+\subsection{Worked Example: Drift on a Small Cycle}
+Let $N^2=9$, so $\Phi_9$ has vertices $0,\dots,8$.
+Using the split:
+\[
+\sigma(0)=0,\quad \sigma(1)=\sigma(2)=\sigma(3)=\sigma(4)=+1,\quad \sigma(5)=\sigma(6)=\sigma(7)=\sigma(8)=-1.
+\]
+Let a cycle of length $T=6$ have phase labels
+\[
+\tau_0=1,\ \tau_1=2,\ \tau_2=4,\ \tau_3=5,\ \tau_4=6,\ \tau_5=8.
+\]
+Then
+\[
+D(N)= (+1)+(+1)+(+1)+(-1)+(-1)+(-1)=0.
+\]
+This cycle saturates the boundary case.
+The postulate requires physical matter cycles to avoid exact cancellation and yield $D(N)\ne 0$.
+
+%=========================================================
+\part{Orbital Structure and Precession}
+%=========================================================
+
+\section{Matter Coupling to a Dominant Source}
+
+\subsection{Source State}
+Let $P_{\odot}\in S_P$ denote a dominant source state.
+
+\subsection{Orbital Update Law}
+An orbital step consists of:
+\begin{enumerate}
+\item matter transformation of the orbiting state $P$ under coupling with $P_{\odot}$,
+\item successor-with-reset advancement of the attached phase label in $\Phi_{N^2}$.
+\end{enumerate}
+
+\subsection{Orbital Closure}
+An orbit is a closed cycle when the coupled pair $(P,\tau)$ returns to its initial configuration after a finite number of steps.
+When closure fails, the mismatch is recorded as discrete precession.
+
+\section{Discrete Precession Measure}
+
+\subsection{Expected Phase and Actual Phase}
+Let $\tau_k$ be the actual phase at step $k$ and $\tau_k^{\mathrm{exp}}$ be the phase that would occur under ideal closure.
+Define the phase separation $\mathrm{dist}_{\Phi}(\tau_k,\tau_k^{\mathrm{exp}})$ as the shortest directed edge count along $\Phi_{N^2}$.
+
+\subsection{Precession Count}
+Define the precession count over one orbit:
+\[
+C=\sum_{k=0}^{T-1}\mathrm{dist}_{\Phi}(\tau_k,\tau_k^{\mathrm{exp}}).
+\]
+This is an integer-valued orbital advance.
+
+\subsection{Worked Example: Phase Distance on a Cycle}
+Let $N^2=10$ and consider phases $2$ and $8$.
+Along the directed cycle:
+\[
+2\to 3\to 4\to 5\to 6\to 7\to 8
+\]
+has length $6$.
+The reverse direction
+\[
+8\to 9\to 0\to 1\to 2
+\]
+has length $4$.
+Thus the shortest directed-edge count is $4$.
+
+%=========================================================
+\part{Discrete Constants as Barycentric Cycle Structures}
+%=========================================================
+
+\section{Vacuum Resolution Frequency $\Omega_{\mathrm{vac}}$}
+
+\subsection{Definition}
+Let $s_0\in S_L$ be a vacuum state and let $\Theta\in\mathbb{Z}_{\ge 0}$ be a structural tension level.
+Define $\Omega_{\mathrm{vac}}$ to be the smallest integer $K\ge 0$ such that
+\[
+\rho(d_K)-\rho(d_0)\ge \Theta
+\]
+along a lawful vacuum trajectory $s_0\to s_1\to \cdots \to s_K$ generated by vacuum transformations.
+
+\subsection{Explanation}
+$\Omega_{\mathrm{vac}}$ is a discrete physical measure of vacuum resolution required to balance a fixed tension.
+It is not a real-valued energy and does not depend on continuous frequency.
+
+\subsection{Worked Example}
+Let $s_0=(1,1)$ and take successive accumulator applications:
+\[
+(1,1)\to (2,1)\to (3,1)\to (4,1)\to \cdots
+\]
+Here $d_k=1$ always, so $\rho(d_k)-\rho(d_0)=0$ for all $k$.
+Thus this trajectory cannot resolve any positive tension $\Theta>0$.
+A different vacuum trajectory involving $\eta$ changes $d$ and may satisfy the condition.
+
+\section{Lattice Coupling Constant $\alpha_{\mathrm{lat}}$}
+
+\subsection{Definition}
+Consider a closed interaction cycle in which reciprocal transformations $\psi$ occur alongside propagation steps in phase space.
+Define $\alpha_{\mathrm{lat}}$ as the stable ratio structure of reciprocal occurrences to propagation occurrences within the closed barycentric cycle.
+
+\subsection{Explanation}
+$\alpha_{\mathrm{lat}}$ is not assigned by a limiting process.
+It is defined by stable repetition within finite closed cycle structure.
+
+%=========================================================
+\part{Horizon Constraints}
+%=========================================================
+
+\section{Resolution Latency and Horizon}
+
+\subsection{Resolution Latency}
+Resolution latency is the mismatch between required vacuum resolution frequency and available cycle duration.
+When the required resolution exceeds the available closure period, coupling fails to transmit structure.
+
+\subsection{Horizon Definition}
+A horizon occurs when, for a region or process,
+\[
+\Omega_{\mathrm{vac}} > T,
+\]
+where $T$ is the relevant closure duration (cycle period) of that region.
+Beyond this threshold, causal structure cannot be resolved across the boundary.
+
+\section{Stability Constraint (Long-Lived Coherence)}
+Long-lived coherence requires sufficiently large phase modulus to prevent disruptive recurrences.
+This is expressed as a lower bound on $N$ for a demanded coherence duration.
+
+%=========================================================
+\part{Worked Translations and Examples}
+%=========================================================
+
+\section{Worked Translation: Oscillatory Structure Without Trigonometry}
+
+\subsection{Statement}
+The continuum form ``second order oscillation'' is replaced by a triadic barycentric polygonal cycle.
+
+\subsection{Construction}
+Let $s_k\in S_L$ be the state.
+Let a threshold condition be fixed in terms of rank of the inertial basis.
+Evolution follows:
+\begin{enumerate}
+\item vacuum extension by $\lambda$ to increase magnitude history,
+\item when the structural threshold is exceeded, apply reciprocal coupling $\psi$ to enact return and preserve history.
+\end{enumerate}
+
+\subsection{Worked Example}
+Let $s_0=(1,2)$.
+Apply $\lambda$ twice:
+\[
+(1,2)\to (3,2)\to (5,2).
+\]
+Now couple $(5,2)$ with a restoring partner $(1,1)$ using $\psi$:
+\[
+\psi((5,2),(1,1))=((1,5),(2,1)).
+\]
+This yields a return-like transformation in a purely integer cycle.
+Repeated enforcement yields a polygonal triad rather than a sine curve.
+
+\section{Worked Comparison: Vacuum vs Matter Rank Growth}
+
+\subsection{Vacuum Growth Example}
+Let $V_0=(1,1)$.
+Apply $\eta$ repeatedly:
+\[
+(1,1)\to (2,1)\to (3,2)\to (5,3)\to (8,5).
+\]
+Denominators are $1,1,2,3,5$, so ranks are
+\[
+\rho(1)=0,\ \rho(1)=0,\ \rho(2)=1,\ \rho(3)=1,\ \rho(5)=2.
+\]
+Growth is gradual.
+
+\subsection{Matter Growth Example}
+Let $P_0=(1,1,1)$.
+From the earlier worked example, $Z$ changes from $1$ to $8$ in one step, giving
+\[
+\rho(1)=0,\quad \rho(8)=3.
+\]
+Further matter steps produce higher-order products in $Z$ and enforce strict growth.
+
+%=========================================================
+\part{Translation Dictionary}
+%=========================================================
+
+\section{Dictionary (Descriptive to Ontic)}
+\begin{center}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.42\textwidth} >{\raggedright\arraybackslash}p{0.50\textwidth}}
+\textbf{Descriptive term} & \textbf{Rigbyspace ontic structure}\\ \hline
+Time & Causal index $k\in\mathbb{Z}_{\ge 0}$ and duration functional $T(\{s_k\})$\\
+Position & Linear state $(n,d)\in S_L$\\
+Momentum & Coupled evolution of $(n,d)$ under $\eta$ and $\psi$\\
+Energy & Vacuum resolution frequency $\Omega_{\mathrm{vac}}$\\
+Mass & Inertial basis $d$ and mass level $\rho(d)$\\
+Wave-like regime & History-free duration condition $H=0$ in the duration functional\\
+Particle-like regime & History-bearing condition $H>0$ in the duration functional\\
+Symmetry & Closed phase cycle $\Phi_N$ and invariant cross-product relations\\
+Field & Coupled state system on $S_L$ and $S_P$ under lawful transformations\\
+Curvature / gravity & Non-vanishing drift $D(N)\ne 0$ in phase viscosity\\
+Constant & Stable triadic barycentric cycle structure with unit-width lock\\
+\end{longtable}
+\end{center}
+
+%=========================================================
+\part{Glossary}
+%=========================================================
+
+\section{Glossary of Terms}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.28\textwidth} >{\raggedright\arraybackslash}p{0.67\textwidth}}
+\textbf{Term} & \textbf{Definition}\\ \hline
+Accumulator $\lambda$ & Vacuum generator on $S_L$: $\lambda(n,d)=(n+d,d)$.\\
+Arrow of Time & Matter admissibility law enforcing strict increase of structural depth, e.g.\ $\rho(Z')>\rho(Z)$.\\
+Boost state $U$ & A linear state $(n_u,d_u)\in S_L$ used to define integer event transformations.\\
+Causal index & The universal ordered label $k$ of lawful succession.\\
+Constraint vacuum & A suspended linear state $(n,0)$ with $n\ne 0$.\\
+Cross-determinant $\Delta_{\times}$ & Deviation between unreduced pairs: $\Delta_{\times}(a,b)=n_b d_a - n_a d_b$.\\
+Doubling threshold $T_k$ & Integer-doubling sequence: $T_0=1$, $T_{k+1}=2T_k$.\\
+Drift $D(N)$ & Phase viscosity drift: $D(N)=\sum_{k=0}^{T-1}\sigma(\tau_k)$.\\
+Duration functional $T(\{s_k\})$ & Physical duration accumulated by a trajectory: $T=\sum \mathbf{1}_{H(s_k)>0}$.\\
+Event $E$ & Ordered pair of linear states $(S_t,S_x)$.\\
+Extended linear space $S_L^{\mathrm{ext}}$ & $S_L$ together with suspended states $(n,0)$.\\
+Interval $I(E)$ & Integer interval: $I(E)=n_t^2 d_x^2 - n_x^2 d_t^2$.\\
+Linear state space $S_L$ & Unreduced integer pairs $(n,d)$ with $d\ne 0$.\\
+Mass level $m_L$ & Structural mass classification: $m_L=\rho(d)$.\\
+Matter state space $S_P$ & Integer triples $(X,Y,Z)$ with $X,Y,Z\ne 0$.\\
+Non-existence & Ontological exclusion of real numbers, limits, analytic functions, equivalence classes, and continuum structures.\\
+Numerical ZERO & Linear state $(0,d)$ with $d>0$.\\
+Phase space $\Phi_N$ & Directed cycle graph on vertices $\{0,\dots,N-1\}$.\\
+Rank $\rho$ & Structural depth defined by doubling thresholds: $T_{\rho(m)}\le m<T_{\rho(m)+1}$.\\
+Reciprocal $\psi$ & Coupled transformation: $\psi((a,b),(c,d))=((d,a),(b,c))$.\\
+Resolution law & ZERO Logic rule: $\psi((n,0),(c,d))=((0,n),(d,c))$.\\
+Separation principle & Ontic objects determine law; descriptive labels do not.\\
+Successor-with-reset & Phase transformation $\mathrm{succ}_N$ advancing $s$ and resetting at $N-1$ to $0$.\\
+Triadic convergence & Stabilization into the barycentric cycle \{Emission, Memory, Return\} with unit-width lock.\\
+Vacuum resolution frequency $\Omega_{\mathrm{vac}}$ & Smallest $K$ for which rank increase meets a tension threshold along a lawful vacuum trajectory.\\
+\end{longtable}
+
+%=========================================================
+\part{Conclusion}
+%=========================================================
+
+\section{Conclusion}
+Rigbyspace Dynamics is a complete physical foundation expressed solely in integer ontology.
+Cyclicity is a graph property, scale is rank, deviation is cross-determinant, stabilization is triadic lock,
+vacuum evolution is linear, matter evolution is multiplicative and enforces monotone structural depth,
+ZERO Logic resolves suspension without null collapse, interval structure is preserved through integer cross-relations,
+and gravity appears as non-vanishing phase viscosity drift. Constants are stable barycentric cycle structures.
+
+\end{document}
