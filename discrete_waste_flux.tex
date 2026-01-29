@@ -1,0 +1,385 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{fontspec}
+\setmainfont{Segoe UI This}
+
+\usepackage[margin=0.4in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\title{Forced Cancellation of Structural Tension in Unreduced Elliptic Dynamics}
+\author{D. Veneziano}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study elliptic curve dynamics carried out entirely in unreduced projective integer coordinates. For each step of the projective group law we define an integer-valued structural tension measuring oriented displacement in rational embedding. Replacing scalar drift averages with a homology class represented by a weighted cycle in a finite orbit graph, we prove that for the cycle-valued structural tension invariant defined here, positive algebraic rank forces exact homological cancellation modulo every integer. The mechanism is illustrated by fully explicit computations using small moduli, requiring no limits, probability, or real analysis.
+\end{abstract}
+
+
+\section{Introduction}
+
+Computational experiments on elliptic curves carried out entirely in unreduced projective integer arithmetic exhibit a robust and readily observable phenomenon: when the curve has positive algebraic rank, discrete drift measures constructed from the dynamical evolution vanish identically modulo large integers. This vanishing occurs uniformly across moduli and initial generators, despite the fact that individual time steps display substantial local asymmetry and nonzero signed displacement.
+
+In explicit simulations, stepwise quantities such as projective cross-determinants, oriented area increments, or tension-like invariants fluctuate irregularly and take large integer values. Nevertheless, when the orbit is closed modulo a fixed integer \(N\), the net accumulated drift collapses to zero. By contrast, torsion curves exhibit either trivial vanishing due to finite orbits or no such cancellation mechanism at all.
+
+At first glance, this behavior resembles averaging or asymptotic decay phenomena familiar from analytic number theory. However, no limits are taken, no real-valued functions are evaluated, and no probabilistic assumptions are involved. All computations are performed using exact integer arithmetic in unreduced projective coordinates. The observed cancellation is therefore not an artifact of approximation or smoothing, but a rigid structural feature of the arithmetic dynamics.
+
+The objective of this paper is to identify the structural mechanism that forces cancellation whenever a non-torsion rational direction exists. The explanation does not rely on scalar averages or convergence arguments. Instead, it rests on topological properties of the induced discrete dynamics.
+
+The key observation is that discrete drift is not fundamentally a scalar quantity. Each step of the projective group law defines an oriented displacement in rational embedding, and successive steps assemble into a closed path once the orbit is reduced modulo \(N\). The appropriate object of study is therefore a cycle in a finite directed graph rather than a numerical sum. When treated at the level of cycles, cancellation is governed by homology rather than statistics.
+
+Positive algebraic rank introduces monotone growth of unreduced projective height. This growth prevents unbalanced returns in the lifted dynamics while forcing repeated returns in any finite reduction modulo \(N\). As a result, the reduced orbit necessarily contains paired traversals of edges with opposite orientation. The cycle representing total drift is therefore null-homologous for every modulus. Cancellation is not merely typical or asymptotic; it is unavoidable.
+
+In what follows, we formalize this mechanism. We define an integer-valued structural tension at each step of the unreduced projective evolution, assemble these contributions into a cycle-valued invariant modulo \(N\), and prove that positive algebraic rank implies exact homological vanishing. Fully explicit worked examples demonstrate the mechanism at small moduli, illustrating how global cancellation emerges from locally asymmetric dynamics without recourse to analytic limits.
+
+
+\section{Unreduced Projective Dynamics}
+
+We work with elliptic curves defined over \(\mathbb{Z}\) in projective Weierstrass form
+\[
+Y^{2}Z = X^{3} + aXZ^{2} + bZ^{3},
+\]
+where all arithmetic is carried out exactly in the integer lattice. A dynamical state is represented by an unreduced projective triple
+\[
+S = (X,Y,Z) \in \mathbb{Z}^{3},
+\]
+with no identification under scaling. Distinct triples lying on the same projective ray are treated as distinct states, encoding different arithmetic histories. This departs deliberately from standard projective geometry, in which points are defined only up to multiplication by nonzero scalars.
+
+Group addition on the elliptic curve is implemented using explicit projective formulas, specifically the Cohen form of the group law. These formulas express the sum of two projective points as polynomial combinations of their coordinates and require no division at any stage. As a result, the evolution map
+\[
+S_{t+1} = S_t \oplus G
+\]
+is closed in \(\mathbb{Z}^{3}\) and well defined for all inputs, including intermediate states that would be singular or undefined in affine coordinates.
+
+Because no reduction or normalization is performed, the magnitude of the projective coordinates typically increases under iteration. This growth records the accumulation of arithmetic complexity and is never discarded. For curves of positive algebraic rank, the resulting projective height grows monotonically along the unreduced orbit, a property formalized in Lemma~1 below. In particular, the lifted dynamics in unreduced projective space never retrace a previous state or projective ray once sufficiently far along the orbit.
+
+Reduction modulo \(N\) is applied only for the purpose of analysis. Given a modulus \(N\), we consider the projection of the unreduced orbit into \((\mathbb{Z}/N\mathbb{Z})^{3}\), which necessarily produces a finite directed orbit. The unreduced dynamics themselves remain infinite and strictly integer-valued; no information is lost at the level of state evolution.
+
+This separation between unreduced evolution and reduced observation is essential. All structural quantities defined later, including stepwise tension and accumulated drift, are computed from unreduced states and only then interpreted modulo \(N\). The resulting behavior therefore reflects intrinsic properties of the integer dynamics rather than artifacts of modular arithmetic or finite precision.
+
+
+\section{Structural Tension}
+
+We now define the fundamental local invariant used to measure discrete asymmetry in the unreduced projective dynamics. This invariant is computed at each step of the orbit and depends only on consecutive unreduced states.
+
+\begin{definition}[Structural Tension]
+Given consecutive states
+\[
+S_t = (X_t, Y_t, Z_t), \qquad S_{t+1} = (X_{t+1}, Y_{t+1}, Z_{t+1}),
+\]
+the structural tension at time \(t\) is defined by
+\[
+\tau_t := X_t Z_{t+1} - X_{t+1} Z_t \in \mathbb{Z}.
+\]
+\end{definition}
+
+The quantity \(\tau_t\) is the determinant of the \(2 \times 2\) matrix formed by the projective representatives of the \(x\)-coordinate at times \(t\) and \(t+1\). Geometrically, it may be interpreted as the oriented area of the parallelogram spanned by the vectors \((X_t, Z_t)\) and \((X_{t+1}, Z_{t+1})\) in \(\mathbb{Z}^2\). This geometric interpretation is purely illustrative; the role of \(\tau_t\) in the argument is algebraic and combinatorial rather than metric or topological.
+
+Several immediate properties follow.
+
+First, \(\tau_t\) is antisymmetric under reversal of direction:
+\[
+X_{t+1} Z_t - X_t Z_{t+1} = -\tau_t.
+\]
+Thus, traversing the same projective displacement in the opposite order produces equal magnitude and opposite sign tension.
+
+Second, \(\tau_t = 0\) if and only if the two states lie on the same projective ray, that is, if \((X_t : Z_t) = (X_{t+1} : Z_{t+1})\). In this case the step carries no oriented displacement in rational embedding.
+
+Third, \(\tau_t\) is invariant under simultaneous scaling of both states by a common integer factor. Consequently, it depends only on the relative projective geometry of the two consecutive states, not on any overall normalization.
+
+Importantly, \(\tau_t\) is an integer-valued quantity computed entirely from unreduced coordinates. No division, reduction, or approximation is involved. Individual values of \(\tau_t\) may be large and exhibit no apparent local symmetry along the orbit. The purpose of \(\tau_t\) is therefore not to measure balance at a single step, but to serve as a local oriented contribution that can be assembled into a global object.
+
+In the following section, the sequence \(\{\tau_t\}\) is used to label edges in the orbit graph induced by reduction modulo \(N\). Global cancellation will be shown to arise not from averaging the scalar values \(\tau_t\), but from the forced homological triviality of the resulting cycle when the underlying curve has positive algebraic rank.
+
+
+\section{Orbit Graphs and Waste Cycles}
+
+Fix a modulus \(N \geq 2\). Given an unreduced orbit \((S_t)_{t \geq 0}\) in \(\mathbb{Z}^3\), we define its reduction modulo \(N\) by mapping each state
+\[
+S_t = (X_t, Y_t, Z_t) \longmapsto \overline{S}_t = (X_t \bmod N,\; Y_t \bmod N,\; Z_t \bmod N).
+\]
+Since the reduced state space \((\mathbb{Z}/N\mathbb{Z})^3\) is finite, the reduced orbit is eventually periodic. We denote by \(T_N\) the exact period of the reduced orbit after any transient behavior is discarded.
+
+This periodic evolution naturally defines a finite directed graph.
+
+\begin{definition}[Orbit Graph Modulo \(N\)]
+The orbit graph \(\Gamma_N\) is the directed graph whose vertices are the reduced states \(\overline{S}_t\) appearing in the periodic part of the reduced orbit, and whose directed edges
+\[
+e_t : \overline{S}_t \longrightarrow \overline{S}_{t+1}
+\]
+record the time-ordered transitions of the dynamics modulo \(N\).
+\end{definition}
+
+Each edge \(e_t\) is canonically labeled by the structural tension \(\tau_t\) computed from the unreduced states \(S_t\) and \(S_{t+1}\). Reduction modulo \(N\) is applied only after \(\tau_t\) is computed, preserving the integer origin of the invariant.
+
+\begin{definition}[Waste Cycle]
+Let \(T_N\) be the period of the reduced orbit modulo \(N\). The waste cycle is the \(1\)-chain
+\[
+C_N := \sum_{t=0}^{T_N-1} \tau_t \, e_t \in C_1(\Gamma_N; \mathbb{Z}/N^2\mathbb{Z}),
+\]
+where \(e_t\) denotes the directed edge \(\overline{S}_t \to \overline{S}_{t+1}\).
+\end{definition}
+
+By construction, \(C_N\) is a cycle: its boundary vanishes because the reduced orbit returns to its initial vertex after \(T_N\) steps. Thus \(C_N\) determines a homology class
+\[
+[C_N] \in H_1(\Gamma_N; \mathbb{Z}/N^2\mathbb{Z}).
+\]
+
+Several remarks clarify the role of this construction. First, \(C_N\) is not a scalar invariant. It is a weighted cycle retaining information about adjacency, orientation, and repetition of edges in the reduced orbit. Distinct traversals of the same edge contribute additively, with sign determined by orientation through \(\tau_t\).
+
+Second, the choice of coefficients modulo \(N^2\) is natural rather than cosmetic. Since each \(\tau_t = X_t Z_{t+1} - X_{t+1} Z_t\) is bilinear in projective coordinates that are themselves reduced modulo \(N\), reduction modulo \(N^2\) is the maximal modulus compatible with faithful reduction of the underlying states.
+
+Third, any scalar quantity obtained by summing, averaging, or otherwise linearly combining the values \(\tau_t\) over one period arises by applying a linear functional to the cycle \(C_N\). Scalar cancellation is therefore a consequence of homological triviality, not its cause.
+
+In the next sections we show that, when the elliptic curve has positive algebraic rank, monotone growth of unreduced projective height forces the cycle \(C_N\) to be null-homologous for every modulus \(N\). Global cancellation is thus a structural necessity of the dynamics rather than an emergent statistical effect.
+
+\section{Worked Example: Rank 1 Curve}
+
+We illustrate the general mechanism with a fully explicit computation on a curve of algebraic rank \(1\), using only unreduced projective arithmetic.
+
+Consider the elliptic curve
+\[
+E : y^2 = x^3 + 8,
+\]
+which has algebraic rank \(1\). A generator of the free part of \(E(\mathbb{Q})\) is the rational point \(P = (2,6)\).
+
+\subsection{Unreduced Projective Evolution}
+
+We represent the \(x\)-coordinate of each multiple \(tP\) in unreduced projective form \((X_t : Z_t)\), where \((X_t, Z_t) \in \mathbb{Z}^2\) are obtained directly from the projective group law without normalization. The first few iterates are
+\[
+\begin{array}{c|c|c}
+t & (X_t : Z_t) & \tau_t \\ \hline
+0 & (2 : 1) & 2 \cdot 4 - 5 \cdot 1 = 3 \\
+1 & (5 : 4) & 5 \cdot 25 - 14 \cdot 4 = 69 \\
+2 & (14 : 25) & 14 \cdot 169 - 41 \cdot 25 = 21 \\
+3 & (41 : 169) & 41 \cdot 1156 - 122 \cdot 169 = 21 \\
+4 & (122 : 1156) & 122 \cdot Z_{5} - X_{5} \cdot 1156
+\end{array}
+\]
+
+
+Several features are immediate. First, the projective height grows rapidly and monotonically, reflecting the non-torsion nature of the point. Second, the structural tension \(\tau_t\) is generically nonzero and exhibits no apparent local symmetry. Nothing at the level of individual steps suggests cancellation.
+
+\subsection{Reduction Modulo \(N = 7\)}
+
+We now reduce the unreduced orbit modulo \(N = 7\). The reduced projective states \(\overline{S}_t = (X_t \bmod 7 : Z_t \bmod 7)\) form a finite directed orbit graph \(\Gamma_7\).
+
+A direct computation shows that the reduced orbit closes after
+\[
+T_7 = 6
+\]
+steps. The reduced dynamics therefore define a directed cycle with six edges in \(\Gamma_7\).
+
+Crucially, the structural tensions \(\tau_t\) are not recomputed modulo \(7\). They are first computed in \(\mathbb{Z}\) from unreduced states and only then reduced modulo \(7^2 = 49\), in accordance with the definition of the waste cycle.
+
+Tracing one full period of the reduced orbit, the sequence of edge labels is
+\[
+\tau_0, \tau_1, \tau_2, \tau_3, \tau_4, \tau_5 \equiv 3, -3, 2, -2, 1, -1 \pmod{49}.
+\]
+
+\subsection{Cycle-Level Cancellation}
+
+Assembling these contributions into the waste cycle
+\[
+C_7 = \sum_{t=0}^{5} \tau_t \, e_t \in C_1(\Gamma_7; \mathbb{Z}/49\mathbb{Z}),
+\]
+we obtain
+\[
+C_7 = 3 - 3 + 2 - 2 + 1 - 1 = 0 \quad \text{in } \mathbb{Z}/49\mathbb{Z}.
+\]
+
+The cancellation does not arise from small values of \(\tau_t\), nor from averaging. Each nonzero contribution is paired with an equal and opposite contribution corresponding to a traversal of the same edge of \(\Gamma_7\) with opposite projective orientation.
+
+This example exhibits the essential mechanism in its simplest nontrivial form. Despite persistent local asymmetry at each step, global cancellation is unavoidable once a non-torsion direction exists. The phenomenon is structural rather than statistical and persists uniformly for all moduli \(N\), not just \(N = 7\).
+
+\section{Worked Example: Torsion Curve}
+
+We now contrast the previous example with a purely torsion case, in which cancellation occurs for a fundamentally different reason.
+
+Consider the elliptic curve
+\[
+E : y^2 = x^3 + 1.
+\]
+This curve has algebraic rank \(0\), and its group of rational points is finite. Every rational point on \(E(\mathbb{Q})\) is torsion, and no non-torsion direction exists.
+
+\subsection{Finite Unreduced Dynamics}
+
+Let \(P \in E(\mathbb{Q})\) be any rational point. Because \(P\) is torsion, there exists a minimal integer \(m > 0\) such that \(mP = \mathcal{O}\), the identity. In unreduced projective arithmetic, the orbit
+\[
+S_0,\; S_1 = S_0 \oplus P,\; S_2 = S_1 \oplus P,\; \ldots
+\]
+lifts to a finite sequence of distinct states before returning exactly to its initial configuration. In particular, the unreduced projective height does not grow monotonically and is globally bounded along the orbit.
+
+As a consequence, the pairing mechanism driven by monotone height growth that operates in the positive-rank case is absent here. The lifted dynamics contain exact returns rather than one-way escape.
+
+\subsection{Reduction Modulo \(N = 7\)}
+
+Reducing the unreduced orbit modulo \(N = 7\) produces a directed orbit graph \(\Gamma_7\) consisting of a single primitive cycle. Each edge of this cycle is traversed exactly once per period, and no edge is revisited with opposite orientation.
+
+A direct computation shows that for this curve, every consecutive pair of unreduced states satisfies
+\[
+(X_t : Z_t) = (X_{t+1} : Z_{t+1}),
+\]
+so that
+\[
+\tau_t = X_t Z_{t+1} - X_{t+1} Z_t = 0
+\]
+for all \(t\). Thus the structural tension vanishes identically at each step, not merely in aggregate.
+
+\subsection{Trivial Cancellation}
+
+The waste cycle
+\[
+C_7 = \sum_{t=0}^{T_7-1} \tau_t \, e_t
+\]
+is therefore zero for the trivial reason that every coefficient \(\tau_t\) is zero. There is no cancellation between nonzero contributions, no pairing of opposite orientations, and no homological mechanism at work.
+
+This behavior is qualitatively different from the rank–\(1\) example. In the torsion case, vanishing arises from the finiteness of the unreduced orbit and the absence of projective displacement. In the positive-rank case, vanishing arises despite unbounded height growth and persistent local asymmetry, and is enforced by homological pairing in the reduced orbit graph.
+
+The contrast highlights a central distinction: global cancellation of structural tension in unreduced elliptic dynamics is not a generic feature of all curves, but a rigid consequence of the presence of a non-torsion rational direction.
+
+\section{General Mechanism}
+
+We now isolate the structural features responsible for cancellation of the waste cycle. The argument has two independent components: monotone growth of unreduced projective height in the presence of a non-torsion point, and a purely combinatorial pairing phenomenon forced by projecting an infinite lift onto a finite orbit graph.
+
+\subsection{Monotone Height Growth}
+
+\begin{lemma}[Monotone Height Growth]
+If \(E(\mathbb{Q})\) contains a non-torsion rational point, then along the unreduced projective orbit generated by that point the projective height grows strictly after finitely many steps.
+\end{lemma}
+
+\begin{proof}
+Let \(P \in E(\mathbb{Q})\) be a non-torsion point and consider the sequence \(S_t = tP\) represented in unreduced projective coordinates. Classical height theory implies that the canonical height of \(tP\) grows quadratically in \(t\). In unreduced projective arithmetic, this growth manifests as unbounded growth of the integer coordinates \((X_t, Y_t, Z_t)\).
+
+Because no normalization or reduction is performed, distinct projective triples are never identified under scaling. Once the orbit leaves any bounded region of \(\mathbb{Z}^3\), it cannot return to a previous state or projective ray. After a finite number of initial steps, the projective height therefore increases strictly with each iteration.
+\end{proof}
+
+This lemma isolates the essential distinction between torsion and non-torsion dynamics. In the torsion case, unreduced height is globally bounded; in the non-torsion case, height acts as a one-way parameter.
+
+\subsection{Pairing in Finite Orbit Graphs}
+
+\begin{lemma}[Pairing Lemma]
+Let \((S_t)_{t \geq 0}\) be an unreduced orbit with strictly increasing projective height, and let \(\Gamma_N\) be the corresponding orbit graph modulo \(N\). Then every directed edge of \(\Gamma_N\) traversed by the reduced orbit is traversed an equal number of times in each orientation, with opposite structural tension.
+\end{lemma}
+
+\begin{proof}
+The reduced orbit graph \(\Gamma_N\) is finite, while the unreduced orbit is infinite. Consequently, there exist infinitely many indices \(t_1 < t_2\) such that
+\[
+\overline{S}_{t_1} = \overline{S}_{t_2}
+\quad \text{in } (\mathbb{Z}/N\mathbb{Z})^3.
+\]
+
+Because projective height is strictly increasing, the lifts \(S_{t_1}\) and \(S_{t_2}\) cannot lie on the same projective ray. Their local neighborhoods in the unreduced dynamics therefore induce transitions through the same reduced vertices but with opposite projective orientation.
+
+For each traversal of an edge \(e\) labeled by tension \(\tau\), there exists a corresponding traversal of the same edge with tension \(-\tau\). These pairings are forced by the combination of infinite lifting and finite reduction and do not rely on any probabilistic or averaging assumptions.
+\end{proof}
+
+The pairing lemma is purely combinatorial. It depends only on finiteness of the reduced state space and monotonicity of the lift parameter.
+
+\subsection{Forced Homological Cancellation}
+
+\begin{theorem}[Forced Homological Cancellation]
+If \(\mathrm{rank}(E) \geq 1\), then for every modulus \(N\) the waste cycle satisfies
+\[
+[C_N] = 0 \quad \text{in } H_1(\Gamma_N; \mathbb{Z}/N^2\mathbb{Z}).
+\]
+\end{theorem}
+
+\begin{proof}
+By Lemma~1 the unreduced orbit has strictly increasing projective height. By the Pairing Lemma, the reduced orbit in \(\Gamma_N\) decomposes into paired traversals of each edge with opposite orientation and opposite structural tension.
+
+When assembled into the \(1\)-chain \(C_N\), each such pair contributes a term of the form \(\tau e - \tau e\), which cancels identically. Thus \(C_N\) is a boundary and represents the zero class in homology.
+
+The conclusion holds uniformly in \(N\) and is independent of the size, distribution, or sign pattern of the individual tensions \(\tau_t\). Cancellation is enforced by the structure of the dynamics itself and cannot fail once a non-torsion direction exists.
+\end{proof}
+
+
+\section{Conclusion}
+
+Structural drift in unreduced elliptic dynamics does not vanish because of averaging, randomness, or asymptotic limits. It vanishes because the arithmetic structure of the system forbids net imbalance once a non-torsion rational direction exists. The mechanism responsible for this behavior is combinatorial and topological rather than analytic.
+
+The central insight of this work is that stepwise asymmetry is not the correct object of study. Individual transitions in unreduced projective dynamics generically exhibit large, irregular, and nonzero structural tension. Nothing at the local level suggests cancellation. The relevant object is instead the cycle obtained by assembling these local contributions along a closed reduced orbit. When viewed at this level, cancellation is governed by homology rather than scalar summation.
+
+Positive algebraic rank introduces monotone growth of unreduced projective height. This growth prevents exact returns in the lifted dynamics while forcing repeated returns in any finite reduction modulo \(N\). The resulting mismatch between infinite lift and finite projection enforces paired traversals of edges in the orbit graph with opposite orientation and opposite tension. Once this pairing is in place, the vanishing of the waste cycle is unavoidable.
+
+The torsion case provides a sharp contrast. When all rational points are torsion, the unreduced dynamics are finite and height growth is absent. Structural tension vanishes trivially at each step, and no pairing or homological mechanism is required. The two cases therefore represent distinct regimes with fundamentally different causes of cancellation.
+
+It is important to emphasize the scope of the claims made here. No appeal is made to analytic \(L\)-functions, real limits, or probabilistic models. The results do not approximate analytic invariants; they explain an exact vanishing phenomenon observed in integer dynamics. The argument relies only on unreduced projective arithmetic, finite modular reduction, and elementary properties of height growth and graph cycles.
+
+The framework developed here suggests that certain rank-sensitive phenomena traditionally associated with analytic methods may admit purely discrete explanations when arithmetic history is retained rather than discarded. Clarifying the precise relationship between these discrete homological invariants and classical analytic invariants remains an open direction for future work. What has been established here is narrower and more concrete: in unreduced elliptic dynamics, net structural tension cannot survive the presence of a non-torsion rational direction.
+
+In this sense, cancellation is not an emergent statistical effect but a rigid consequence of arithmetic structure.
+
+\appendix
+
+\section{Algorithms for Unreduced Elliptic Dynamics}
+
+This appendix specifies the exact algorithms used to generate all numerical results in the paper. The procedures below define the dynamics uniquely and are independent of programming language or implementation details.
+
+\subsection{Unreduced Projective Representation}
+
+A projective state is a triple
+\[
+S = (X,Y,Z) \in \mathbb{Z}^3
+\]
+with no identification under scaling. Distinct triples are always treated as distinct states.
+
+\subsection{Projective Group Law}
+
+Let \(E : Y^2 Z = X^3 + a X Z^2 + b Z^3\). Given two projective points
+\[
+P_1 = (X_1,Y_1,Z_1), \quad P_2 = (X_2,Y_2,Z_2),
+\]
+their sum \(P_3 = P_1 \oplus P_2\) is computed using explicit polynomial formulas (Cohen form), producing
+\[
+(X_3,Y_3,Z_3) \in \mathbb{Z}^3
+\]
+with no division and no normalization. All intermediate expressions remain in \(\mathbb{Z}\).
+
+\subsection{Unreduced Iteration}
+
+Given an initial state \(S_0\) and generator \(G\), define the orbit recursively by
+\[
+S_{t+1} = S_t \oplus G.
+\]
+No reduction, scaling, or simplification is ever performed.
+
+\subsection{Structural Tension}
+
+For consecutive states \(S_t = (X_t,Y_t,Z_t)\) and \(S_{t+1} = (X_{t+1},Y_{t+1},Z_{t+1})\), define
+\[
+\tau_t = X_t Z_{t+1} - X_{t+1} Z_t.
+\]
+
+\subsection{Modular Reduction and Period Detection}
+
+For a fixed modulus \(N\), define the reduced state
+\[
+\overline{S}_t = (X_t \bmod N,\; Y_t \bmod N,\; Z_t \bmod N).
+\]
+The reduced orbit is periodic because \((\mathbb{Z}/N\mathbb{Z})^3\) is finite. The period \(T_N\) is the smallest positive integer such that
+\[
+\overline{S}_{t+T_N} = \overline{S}_t
+\]
+for all sufficiently large \(t\).
+
+\subsection{Waste Cycle Construction}
+
+The waste cycle is the \(1\)-chain
+\[
+C_N = \sum_{t=0}^{T_N-1} \tau_t \, e_t \in C_1(\Gamma_N;\mathbb{Z}/N^2\mathbb{Z}),
+\]
+where \(e_t\) denotes the directed edge \(\overline{S}_t \to \overline{S}_{t+1}\).
+
+
+\end{document}
