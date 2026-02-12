@@ -2,6 +2,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{geometry}
+% Add to Preamble
+\usepackage{fontspec} % Required for specific Unicode
+\newfontfamily\greekfont{Segoe UI This} % Or any font supporting archaic Greek
+\newcommand{\koppa}{\text{\greekfont ϙ}} % The Signature Imbalance Operator
 \usepackage{tikz}
 \usepackage{tocloft}
 \usetikzlibrary{arrows.meta, patterns, bending, decorations.markings, shapes.geometric}
@@ -56,95 +60,82 @@ The universe admits only the following objects:
 
 Consequently, no equivalence classes (such as the rationals $\mathbb{Q}$ as traditionally defined), real numbers ($\mathbb{R}$), limits to infinity, or analytic functions exist as fundamental entities. All physical observables must be constructible via finite integer algorithms.
 
-\section{Discrete Replacement for Modulo}
+\subsection{The Mask Postulate}
+\begin{axiom}[The Mask Postulate]
+Continuous constants (irrationals) and analytic limits are not ontological primitives. They are Phenomenological Masks produced by high-frequency rational oscillations between discrete Explicit Rational Pairs (ERPs). Physical observation is a coarse-grained measurement of the stable Barycentric Structure of a Triadic Cycle. The "value" of a constant is the dynamic process of its generation, not a static point on a line.
+\end{axiom}
+
+\section{The 11-Microtick Cyclic Geometry}
 
 \subsection{Motivation}
-The classical expression $t \pmod N$ presupposes a quotient operation and the algebraic structure of modular arithmetic. In a strictly discrete physical universe, the concept of ``quotienting'' is an abstraction that obscures the underlying mechanism of cyclic evolution. We replace the arithmetic modulo with explicit state evolution on a finite directed graph. This provides a geometric and causal interpretation of periodicity, where time is measured by transitions between discrete states rather than by division.
+The classical expression $t \pmod N$ presupposes a quotient operation and the algebraic structure of modular arithmetic. In a strictly discrete physical universe, the concept of "quotienting" is an abstraction that obscures the underlying mechanism of cyclic evolution. We replace the arithmetic modulo with explicit state evolution on a fixed finite directed graph. This provides a geometric and causal interpretation of periodicity, where time is measured by transitions between discrete states rather than by division.
 
-\subsection{Definition of the Phase Space}
+\subsection{The Asymmetric Microtick Partition}
+The fundamental cycle $\mathcal{T}_{11}$ is not a homogeneous sequence but a structured metric partition governed by the Triadic Phase logic.
 
-The fundamental arena for cyclic dynamics is the Phase Space. This is not a continuous circle but a finite set of discrete states.
-
-\begin{definition}[Phase Space]
-For a fixed integer $N \ge 1$, define the phase space
-\[ \Phi_N := \{0, 1, 2, \dots, N-1\}. \]
-This is a finite set of integer states representing the available distinct phases of a system with capacity $N$.
+\begin{definition}[The Partition Metric]
+The temporal topology is defined by the partition of the 11 microticks into three functional domains:
+\begin{enumerate}
+    \item \textbf{Emission Phase ($E$):} A 4-microtick interval defined by the sequence $[e \to m \to r \to e]$.
+    \item \textbf{Memory Phase ($M$):} A 4-microtick interval defined by the sequence $[m \to r \to e \to m]$.
+    \item \textbf{Return Phase ($R$):} A 3-microtick interval defined by the sequence $[r \to e \to m]$.
+\end{enumerate}
+Total Metric: $4 + 4 + 3 = 11$.
 \end{definition}
 
-\begin{figure}[hbt!]
-    \centering
-    \begin{tikzpicture}[>=Stealth, auto, node distance=2.5cm, thick]
-      \def\N{8} 
-      \def\R{2.5} 
-      \foreach \i in {0,...,7} {
-        \node[draw, circle, minimum size=0.8cm, fill=white] (s\i) at ({90 - \i*360/\N}:\R) {$\i$};
-      }
-      \foreach \i [evaluate=\i as \j using {int(mod(\i+1, \N))}] in {0,...,7} {
-        \draw[->, bend left=15] (s\i) to node[midway, font=\footnotesize] {succ} (s\j);
-      }
-      \draw[->, bend left=15, dashed, red] (s7) to node[midway, above, font=\footnotesize, red] {reset} (s0);
-      \node[align=center, font=\bfseries] at (0,0) {Phase Space $\Phi_{N}$\\$N=8$};
-    \end{tikzpicture}
-    \caption{The discrete Phase Space $\Phi_N$ (here $N=8$) replacing the continuum circle. Evolution is defined by the Successor Map, forming a closed directed graph.}
-    \label{fig:phase_space}
-\end{figure}
-
+\begin{theorem}[Boundary Stress Generation]
+The Return Phase ($R$) possesses a metric contraction relative to $E$ and $M$ ($\Delta \tau_R = 3 < 4$). This geometric asymmetry at the cycle closure constitutes the \textbf{Boundary Stress}, identified as the origin of the restorative tension (Gravitation) and the accumulation point for the Imbalance Ledger \koppa.
+\end{theorem}
 \subsection{Successor-with-Reset Operator}
-
-Movement within the phase space is governed by a deterministic operator that enforces the boundary condition.
+Movement within the cycle is governed by a deterministic operator that enforces the boundary condition.
 
 \begin{definition}[Successor Map]
-Define a function $\operatorname{succ}_N : \Phi_N \to \Phi_N$ by:
+Define a function $\text{succ}: \mathcal{T}_{11} \rightarrow \mathcal{T}_{11}$ by:
 \[
-\operatorname{succ}_N(s) = \begin{cases} 
-s + 1, & \text{if } s < N - 1, \\
-0, & \text{if } s = N - 1.
+\text{succ}(\tau) = 
+\begin{cases} 
+\tau + 1 & \text{if } \tau < 11 \\
+1 & \text{if } \tau = 11 \quad (\text{Reset at } \Omega)
 \end{cases}
 \]
-This function is total, deterministic, and defined entirely by integer comparison. It generates the causal flow of time within the cycle.
+This function is total, deterministic, and defined entirely by integer comparison. The transition $11 \rightarrow 1$ represents the Cycle Boundary Event ($\Omega$), distinct from internal transitions.
 \end{definition}
 
 \subsection{Phase Evolution}
-
 The dynamics of a system are described by the recursive application of the successor map.
 
 \begin{definition}[Phase Evolution]
-Given an initial phase $s_0 \in \Phi_N$, define the phase at time $t \in \mathbb{Z}_{\ge 0}$ recursively:
-\[ \phi_N(0) := s_0, \quad \phi_N(t+1) := \operatorname{succ}_N(\phi_N(t)). \]
+Given an initial microtick $\tau_0 \in \mathcal{T}_{11}$, define the phase at causal time $t \in \mathbb{Z}_{\ge 0}$ recursively:
+\[ \phi(0) := \tau_0 \]
+\[ \phi(t+1) := \text{succ}(\phi(t)) \]
 No arithmetic reduction or division is involved; the state evolves stepwise.
 \end{definition}
 
-\subsection{Axioms for Discrete Modularity}
+\subsection{Cyclic Incommensurability and Phase Precession}
+The kinematic evolution of the system is driven by the breaking of symmetry between the geometric substrate and the interaction logic.
 
-We establish two axioms that govern the behavior of cyclic systems.
-
-\begin{axiom}[Finite Cyclicity]
-The directed graph induced by $\operatorname{succ}_N$ is a single cycle of length $N$.
+\begin{axiom}[Triadic Incommensurability]
+The interaction logic is defined by the Triadic Phase Group $C_3$, while the fundamental temporal geometry is defined by the Prime Cycle $\mathcal{T}_{11}$.
+\[ 11 \not\equiv 0 \pmod 3 \]
+Specifically, $11 \equiv 2 \pmod 3$. This arithmetic incongruence necessitates that a closed geometric cycle ($t \to t+11$) induces a non-vanishing \textbf{Phase Precession} of $+2$ states. This residual prevents the system from stabilizing into a static closed loop, enforcing a strict arrow of temporal evolution.
 \end{axiom}
-
-\begin{axiom}[Determinism]
-For fixed $N$ and $s_0$, the phase $\phi_N(t)$ is uniquely defined for all $t$.
-\end{axiom}
-
 \subsection{Derived Properties}
-
 From the definitions above, we can derive standard periodic properties without invoking modular arithmetic.
 
 \begin{lemma}[Periodicity]
-For all $t \ge 0$, $\phi_N(t + N) = \phi_N(t)$.
+For all $t \ge 0$, $\phi(t+11) = \phi(t)$.
 \end{lemma}
 \begin{proof}
-After $N$ applications of $\operatorname{succ}_N$, the cycle returns to its starting state by the definition of the graph structure.
+After 11 applications of $\text{succ}$, the cycle returns to its starting state by the definition of the graph structure.
 \end{proof}
 
 \begin{lemma}[Phase Uniqueness]
-For $0 \le t_1 < t_2 < N$, $\phi_N(t_1) \neq \phi_N(t_2)$.
+For $0 \le t_1 < t_2 < 11$, $\phi(t_1) \ne \phi(t_2)$.
 \end{lemma}
 
 \subsection{Theorem: Modulo Elimination}
-
 \begin{theorem}[Discrete Modulo Replacement]
-Any construction that would traditionally reference $t \pmod N$ is replaced by the phase $\phi_N(t)$.
+Any construction that would traditionally reference $t \pmod N$ is replaced by the phase $\phi(t)$ on the graph $\mathcal{T}_{11}$. No logarithmic operator exists in the system.
 \end{theorem}
 
 \section{Discrete Replacement for Logarithm}
@@ -244,7 +235,7 @@ Let $S \subset \mathbb{Z}$ be a finite, non-empty set of integers. Define
 
 This definition relies exclusively on integers, finite sets, and integer order comparison. No quotienting, limits, or analytic constructs are involved.
 
-\subsection{Constructive (Algorithmic) Definition}
+\subsection{Constructive Algorithmic Definition}
 
 \begin{definition}[Constructive MAX]
 Given a finite integer sequence $(a_1, a_2, \dots, a_n)$, define the maximum by the following algorithm:
@@ -385,7 +376,7 @@ For an integer $m$, define its size by the discrete rank $\rho(m)$. Growth is de
 Let $\Phi_N = \{0, 1, \dots, N-1\}$ with successor map $\operatorname{succ}_N$. A process is periodic with period $N$ if it evolves solely via $\operatorname{succ}_N$.
 \end{definition}
 
-\subsection{Absolute Value (Eliminated)}
+\subsection{Absolute Value}
 
 \textbf{Motivation}: The absolute value function $|x|$ is an analytic construct often defined piecewise. In Rigbyspace, magnitude is constructive.
 
@@ -401,7 +392,7 @@ For an integer $m$, magnitude is defined structurally via the self-product $m^2$
 \newpage
 \part{Rigbyspace: Constructive Integer Dynamics}
 
-\section{Fundamental Algorithms (The Arithmetic Core)}
+\section{Fundamental Algorithms - The Arithmetic Core}
 
 Before defining physics, we define the permissible integer operations. Standard addition ($+$) and multiplication ($\times$) are assumed.
 
@@ -445,6 +436,17 @@ For an integer $x$, define $\operatorname{sgn}(x)$:
     \item If $x = 0$, return 0.
 \end{enumerate}
 \end{algorithm}
+
+\subsection{The Atomic Operator Set}
+\begin{definition}[Atomic Vacuum Generators]
+The evolution of any discrete state is reducible to the finite application of three atomic operators:
+\begin{enumerate}
+    \item \textbf{Linear Transform ($\lambda$):} $(n, d) \to (n+d, d)$. Governs magnitude growth and linear translation.
+    \item \textbf{Aggregate Transform ($\eta$):} $(n, d) \to (n+d, n)$. Governs structural inversion and accumulation.
+    \item \textbf{Transformative Reciprocal ($\psi$):} $((a,b), (c,d)) \to ((d,a), (b,c))$. Governs the resolution of tension and the coupling of distinct sectors.
+\end{enumerate}
+Every physical attractor (e.g., $\sqrt{2}, \alpha^{-1}$) is defined by a specific, finite periodic sequence of these operators.
+\end{definition}
 
 \section{Fundamental State Space}
 
@@ -509,16 +511,35 @@ This replaces rational numbers. $\mathbb{Q}$ is not used.
     \label{fig:state_space}
 \end{figure}
 
-\begin{definition}[Inertial Mass and Structural Entropy]
-For a state $s = (n, d) \in S_L$:
-\begin{enumerate}
-    \item \textbf{Inertial Mass ($m_I$)}: Defined as the raw integer value of the denominator.
-    \[ m_I(s) := d \in \mathbb{Z}_{\geq 0} \]
-    \item \textbf{Structural Entropy ($S$)}: Defined as the discrete rank of the inertial mass.
-    \[ S(s) := \rho(d) \]
-\end{enumerate}
-\textit{Interpretation:} Inertia measures the vacuum operations required to lift the state (linear weight); Entropy measures the causal history required to generate it (complexity class).
+\subsection{Geometric Capacity and Inertial Mass}
+Rigbyspace postulates that spatial extent is not a background manifold but an emergent property of the state's information capacity.
+
+\begin{definition}[Geometric Capacity]
+For a state $S = (\upsilon, \beta, \koppa)$, the denominator $d$ of the active oscillator $\upsilon$ is defined as the \textbf{Geometric Capacity}. It determines the resolution density of the local vacuum. Expansion of the denominator corresponds strictly to the expansion of the physical metric.
 \end{definition}
+
+\subsection{Inertial Mass}
+\begin{definition}[Inertial Mass]
+The physical quantity of Inertial Mass is identified with the magnitude of the Imbalance Ledger \koppa.
+\[ m_I \equiv ||\koppa|| \]
+This defines mass as the stored historical asymmetry that resists linear state evolution.
+\end{definition}
+
+\subsection{Structural Entropy and Historical Cost}
+\begin{definition}[Structural Entropy]
+The Structural Entropy ($H$) of a state $s=(n,d)$ is the discrete rank of its geometric capacity: $H(s) := \rho(d)$.
+\end{definition}
+\begin{law}[Entropy-Complexity Equivalence]
+The entropy $H(s)$ represents the total \textbf{Historical Cost} or interaction depth required to generate the state. In a discrete universe, numerical precision is not an abstract quality but a physical resource. Increasing the resolution of an ERP (decreasing interval width) requires a strictly monotonic increase in $H(s)$, signifying the accumulation of causal history within the unreduced denominator.
+\end{law}
+
+\subsection{Mass Gap}
+\begin{theorem}[Mass Gap]
+There exists a minimal non-zero mass level. No admissible state satisfies $0<m_L(s)<1$.
+\end{theorem}
+\begin{proof}
+By definition, the mass level $m_L(s) = \rho(d)$ is an integer-valued function. The set of possible non-zero values for $\rho(d)$ is $\{1, 2, 3, \dots\}$. The minimal element of this set is 1.
+\end{proof}
 
 \section{Dynamical Evolution Operators}
 
@@ -608,6 +629,21 @@ The Transformative Reciprocal $\psi$ acting on coupled states $S = (P_1, P_2)$ s
         \item $\psi^4((a,b),(c,d)) = ((a,b),(c,d))$ (Identity)
     \end{itemize}
 \end{enumerate}
+\end{theorem}
+
+\subsection{The Imbalance Operator (\koppa)}
+The conservation of structural complexity is managed by the Imbalance Operator, denoted by the signature \koppa\ (Koppa). Unlike the upper ($\upsilon$) and lower ($\beta$) oscillators which process active magnitude, \koppa\ acts as the ledger for structural history that cannot be resolved within the current cycle.
+
+\begin{definition}[The Imbalance Ledger]
+For a state triple $S = (\upsilon, \beta, \koppa)$, the operator \koppa\ accumulates the residual complexity generated by non-linear interactions (specifically the Doubling Generator).
+\[ \koppa_{n+1} = \koppa_n + \Delta S_{struct} \]
+where $\Delta S_{struct}$ is the "spent" complexity from resolving composite states.
+\end{definition}
+
+\begin{theorem}[Mass Generation via \koppa]
+The physical quantity observed as "Rest Mass" is identified with the magnitude of the \koppa\ ledger.
+\[ m_{rest} \equiv ||\koppa|| \]
+This identifies mass not as an intrinsic property of the particle, but as the accumulated historical imbalance stored in the local field.
 \end{theorem}
 
 \section{System Axioms}
@@ -805,23 +841,37 @@ K_{\text{proj}} := r
 \subsection{The Lattice Coupling Constant}
 
 \subsubsection{Conceptual Role}
+The Lattice Coupling Constant is the discrete analogue of the fine-structure constant. It measures the asymptotic ratio between interaction events ($\psi$) and propagation steps in a closed Barycentric Cycle.
 
-The \textbf{Lattice Coupling Constant} is the discrete analogue of the fine-structure constant. It measures the asymptotic ratio between interaction events ($\psi$) and propagation steps in a closed cycle.
+\subsubsection{Definition of the Barycentric Cycle}
+While the fundamental geometry is 11 microticks (Section 2), the interaction logic is Triadic (Emission, Memory, Return). The full period required for the Phase and Microtick counters to re-synchronize is:
+\[ T_{bary} = 11 \times 3 = 33 \text{ ticks} \]
 
 \begin{definition}[Lattice Coupling Constant]
-Let $\Omega_N$ be the set of all valid state transitions in a closed phase cycle of modulus $N$. Let $\Omega_\psi$ be the subset of transitions requiring a Transformative Reciprocal ($\psi$) operation. The Lattice Coupling Constant is defined by the discrete stabilization of the ratio:
-\[
-\alpha_{\text{lat}} := (\text{count}(\Omega_\psi), \text{count}(\Omega_N)) \in S_L
-\]
-where $\alpha_{\text{lat}}$ is the unique Explicit Rational Pair such that for all $N \ge N_{\text{crit}}$, the count ratio remains invariant. The constant is a property of the finite saturated lattice; no analytic limit is invoked.
+Let $\Omega_{33}$ be the set of all valid state transitions in a closed Barycentric Cycle ($N=33$). Let $\Omega_{\psi}$ be the subset of transitions requiring a Transformative Reciprocal ($\psi$) operation. The Lattice Coupling Constant is defined by the discrete stabilization of the ratio:
+\[ \alpha_{lat} := (\text{count}(\Omega_{\psi}), \text{count}(\Omega_{33})) \in S_L \]
+where $\alpha_{lat}$ is the unique Explicit Rational Pair such that for all $N \ge N_{crit}$ the count ratio remains invariant. The constant is a property of the finite saturated lattice; no analytic limit is invoked.
 \end{definition}
 
-\begin{theorem}[Discrete Fine-Structure Analogue]
-Assume that in a physically relevant regime, the Lattice Coupling Constant $\alpha_{\text{lat}}$ stabilizes. Then:
+\subsection{The Sovereign Metric Invariant (137)}
+\begin{theorem}[Derivation of the Coupling Integer]
+The primary resolution of the vacuum-gauge interface is governed by the unique integer $137$. It is the sum of the saturated Interaction Surface ($S$) and the specific Imbalance Ledger ($\koppa$) of the $\mathcal{T}_{11}$ cycle:
+\[ \alpha^{-1}_{\text{int}} = S + \koppa_{\Delta} \]
+Where:
 \begin{enumerate}
-    \item $\alpha_{\text{lat}}$ is a purely integer object $(n^*, d^*)$.
-    \item All references to coupling strength can be expressed in terms of $\alpha_{\text{lat}}$ and its rank-based properties without invoking real numbers.
+    \item $S = \mathcal{T}_{vac} \times \mathcal{D}_{gauge} = 11 \times 12 = 132$.
+    \item $\koppa_{\Delta} = (N_E + N_M) - N_R = (4 + 4) - 3 = 5$.
 \end{enumerate}
+This yields $132 + 5 = 137$. The stability of electromagnetic interaction is a consequence of the primality of $137$ (the 33rd prime), which ensures structural persistence under the Triadic TRTS dynamics.
+\end{theorem}
+
+\begin{theorem}[Discrete Fine-Structure Analogue]
+Assume that in a physically relevant regime, the Lattice Coupling Constant $\alpha_{lat}$ stabilizes. Then:
+\begin{enumerate}
+    \item $\alpha_{lat}$ is a purely integer object $(n^*, d^*)$.
+    \item All references to coupling strength can be expressed in terms of $\alpha_{lat}$ and its rank-based properties without invoking real numbers.
+\end{enumerate}
+In the asymptotic limit of the Prime Gating mechanism (specifically the 33rd prime, 137), this ratio stabilizes to the structure corresponding to $\alpha^{-1} \approx 137$.
 \end{theorem}
 
 \section{Discrete Interval Invariance}
@@ -906,7 +956,7 @@ This value represents the ``spectral gap'' of the lattice---the number of vacuum
 \subsection{Objective}
 Derive the scalar $K$ for orbital precession without continuum field equations.
 
-\subsection{Algorithm 17.1 (Precession Calculation)}
+\subsection{Precession Calculation}
 \begin{enumerate}
     \item \textbf{Initialize:} Set $P_0 \propto 1/r$. Initialize Phase $s_0 \in \Phi_{N^2}$.
     \item \textbf{Evolve:} Iterate vacuum steps. Update $P_{t+1} = P_t \boxplus P_{\text{Sun}}$. Advance phase $s_{t+1} = \operatorname{succ}_{N^2}^{(k_t)}(s_t)$.
@@ -1115,7 +1165,7 @@ Singularities manifest as graph defects:
 
     \item[Rank Function ($\rho$)] The discrete replacement for the logarithm. It measures the structural depth of an integer by counting the number of doubling thresholds $T_k = 2^k$ it has crossed.
 
-    \item[Structural Entropy ($S$)] A measure of the causal history of a state, defined as the discrete rank of its inertial mass (denominator): $S(s) = \rho(d)$.
+   \item[Structural Entropy ($S$)] A measure of the causal history of a state, defined as the discrete rank of its geometric capacity (denominator): $S(s) = \rho(d)$. This measure quantifies the structural depth of the state's metric basis.
 
     \item[Successor-with-Reset] The fundamental operator on Phase Space $\Phi_N$ that increments the state and deterministically resets to 0 upon reaching $N-1$.
 
